@@ -83,6 +83,7 @@
             h1 {
                 font-size: 1.1em;
                 margin-bottom: 6px;
+                white-space: wrap;
             }
             p {
                 font-size: 1.1em;
@@ -91,6 +92,7 @@
                 word-wrap: break-word;
             }  
             .btn {
+                background: none;
                 position: relative;
                 float: right;
                 margin-right: 10px;
@@ -102,5 +104,29 @@
                 outline: none;
             }
         }
+    }
+}
+@media (max-width: 760px) {
+    .all {
+        display: flex;
+        form {
+            position: relative;
+            // padding: 0 20px;
+            // width: 280px;
+            input, textarea {
+                width: 100%;
+                border: none;
+                padding: 4px;
+                outline: none;
+                font-size: 1.2em;
+                font-family: inherit;
+                resize: none;
+                background: #FFFFFF;
+                color: #111111;
+            }
+        }
+    }
+    .all form {
+        width: 280px;
     }
 }

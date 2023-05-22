@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
-import './styles/active.scss';
+import { useEffect, useState } from 'react'
+import './styles/active.scss'
+import edit from '../assets/edit.svg'
+import deleteImg from '../assets/delete.png'
 
 const Active = (props) => {
     const {
@@ -59,13 +61,13 @@ const Active = (props) => {
                         className='btn'
                         onClick={() => startEditTask(task.id, task.title, task.description)}
                     >
-                        Edit
+                        <img src={edit} alt='edit' />
                     </button>
                     <button
                         className='btn'
                         onClick={() => deleteTask(task.id)}
                     >
-                        Delete
+                        <img src={deleteImg} alt='delete' style={{ width: '20px', height: '20px'}} />
                     </button>
                   </div>
                 )}

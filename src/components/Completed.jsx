@@ -1,4 +1,7 @@
 import './styles/completed.scss'
+import edit from '../assets/edit.svg'
+import deleteImg from '../assets/delete.png'
+
 const Completed = ({ 
     tasks, 
     deleteAllCompletedTasks, 
@@ -12,61 +15,75 @@ const Completed = ({
     editedTaskDescription,
     setEditTaskId,
     setEditedTaskTitle,
-    setEditedTaskDescription, }) => {
+    setEditedTaskDescription, 
+    }) => {
+    const completedTasks = tasks.filter((task) => task.completed)
+    console.log(completedTasks)
+
     return (
         <div className="completed">
             <div className='checkbox'>
-            <ul>
-                {tasks
-                    .filter((task) => task.completed)
-                    .map((task) => (
-                    <li 
-                        style={{ textDecoration: task.checked ? 'line-through' : 'none' }}
-                        key={task.id}>
-                        <input
-                        type="checkbox"
-                        checked={task.completed}
-                        onChange={() => toggleTaskStatus(task.id)}
-                        />
-                        {editTaskId === task.id ? (
-                        <form>
+                <div className='delete-all'>
+                    {completedTasks.length > 0 && (
+                        <button
+                            type='submit'
+                            onClick={deleteAllCompletedTasks}
+                        >
+                            Delete All
+                        </button>
+                    )}
+                </div>
+                <ul>
+                    {tasks
+                        .filter((task) => task.completed)
+                        .map((task) => (
+                        <li 
+                            style={{ textDecoration: task.completed ? 'line-through' : 'none' }}
+                            key={task.id}>
                             <input
-                            type="text"
-                            value={editedTaskTitle}
-                            onChange={(e) => setEditedTaskTitle(e.target.value)}
+                            type="checkbox"
+                            checked={task.completed}
+                            onChange={() => toggleTaskStatus(task.id)}
                             />
-                            <textarea
-                            placeholder="Details"
-                            rows="3"
-                            value={editedTaskDescription}
-                            onChange={(e) => setEditedTaskDescription(e.target.value)}
-                            />
-                            <button onClick={() => saveEditedTask(task.id, editedTaskTitle, editedTaskDescription)}>
-                            Save
-                            </button>
-                            <button onClick={() => cancelEditTask(task.id)}>Cancel</button>
-                        </form>
-                        ) : (
-                        <div className="task-content">
-                            <h1>{task.title}</h1>
-                            <p>{task.description}</p>
-                            <button
-                                className='btn' 
-                                onClick={() => startEditTask(task.id, task.title, task.description)}
-                            >
-                                Edit
-                            </button>
-                            <button
-                                className='btn' 
-                                onClick={() => deleteTask(task.id)}
-                            >
-                                Delete
-                            </button>
-                        </div>
-                        )}
-                    </li>
-                ))}
-            </ul>
+                            {editTaskId === task.id ? (
+                            <form>
+                                <input
+                                type="text"
+                                value={editedTaskTitle}
+                                onChange={(e) => setEditedTaskTitle(e.target.value)}
+                                />
+                                <textarea
+                                placeholder="Details"
+                                rows="3"
+                                value={editedTaskDescription}
+                                onChange={(e) => setEditedTaskDescription(e.target.value)}
+                                />
+                                <button onClick={() => saveEditedTask(task.id, editedTaskTitle, editedTaskDescription)}>
+                                Save
+                                </button>
+                                <button onClick={() => cancelEditTask(task.id)}>Cancel</button>
+                            </form>
+                            ) : (
+                            <div className="task-content">
+                                <h1>{task.title}</h1>
+                                <p>{task.description}</p>
+                                <button
+                                    className='btn' 
+                                    onClick={() => startEditTask(task.id, task.title, task.description)}
+                                >
+                                    <img src={edit} alt='edit' />
+                                </button>
+                                <button
+                                    className='btn' 
+                                    onClick={() => deleteTask(task.id)}
+                                >
+                                    <img src={deleteImg} alt='delete' style={{ width: '20px', height: '20px'}} />
+                                </button>
+                            </div>
+                            )}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     )

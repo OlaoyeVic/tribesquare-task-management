@@ -35,7 +35,7 @@
     display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 760px) {
     .tabs {
         padding: 0;
     }
@@ -43,7 +43,7 @@
         width: 100px;
     }
     .panel {
-        padding: 0;
+        padding: 20px 40px;
     }
     .panel.active {
         // width: 80%;

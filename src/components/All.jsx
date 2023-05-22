@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import './styles/all.scss'
+import edit from '../assets/edit.svg'
+import deleteImg from '../assets/delete.png'
 
 const All = (props) => {
     const {
@@ -20,19 +22,6 @@ const All = (props) => {
     } = props
     const [newTaskTitle, setNewTaskTitle] = useState('')
     const [newTaskDescription, setNewTaskDescription] = useState('')
-  
-    useEffect(() => {
-      // Load tasks from local storage on component mount
-      const storedTasks = localStorage.getItem('tasks')
-      if (storedTasks) {
-        setTasks(JSON.parse(storedTasks))
-      }
-    }, [])
-  
-    useEffect(() => {
-      // Save tasks to local storage whenever tasks state changes
-      localStorage.setItem('tasks', JSON.stringify(tasks))
-    }, [tasks])
   
     const handleAddTask = (event) => {
       event.preventDefault();
@@ -57,6 +46,7 @@ const All = (props) => {
                     <input 
                         type="text" 
                         placeholder="Title"
+                        maxLength={24}
                         value={newTaskTitle}
                         onChange={(event) => setNewTaskTitle(event.target.value)}
                     />
@@ -113,13 +103,13 @@ const All = (props) => {
                                         className='btn'
                                         onClick={() => startEditTask(task.id, task.title, task.description)}
                                     >
-                                        Edit
+                                        <img src={edit} alt='edit' />
                                     </button>
                                     <button
                                         className='btn'
                                         onClick={() => deleteTask(task.id)}
                                     >
-                                        Delete
+                                        <img src={deleteImg} alt='delete' style={{ width: '20px', height: '20px'}} />
                                     </button>
                                 </div>
                                 )}

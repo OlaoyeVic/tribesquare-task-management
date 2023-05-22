@@ -16,27 +16,31 @@ const Tabs = () => {
     const checkActive = (index, className) => activeIndex === index ? className : ""
 
     const addTask = (newTask) => {
-        setTasks([...tasks, newTask])
-        localStorage.setItem('tasks', JSON.stringify(updatedItems))
-      }
+        const updatedTasks = [...tasks, newTask]
+        setTasks(updatedTasks)
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+        retrieveTasksFromLocalStorage()
+        console.log(JSON.parse(localStorage.getItem('tasks')))
+    }
     
-      const toggleTaskStatus = (taskId) => {
+    const toggleTaskStatus = (taskId) => {
         const updatedTasks = tasks.map((task) => {
-          if (task.id === taskId) {
+            if (task.id === taskId) {
             return {
-              ...task,
-              completed: !task.completed,
+                ...task,
+                completed: !task.completed,
             }
-          }
-          return task
+            }
+            return task
         })
         setTasks(updatedTasks)
-        localStorage.setItem('tasks', JSON.stringify(updatedItems))
-      }
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+    }
     
     const deleteTask = (taskId) => {
         const updatedTasks = tasks.filter((task) => task.id !== taskId)
         setTasks(updatedTasks)
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks))
     }
     
     const startEditTask = (taskId, taskTitle, taskDescription) => {
@@ -57,6 +61,7 @@ const Tabs = () => {
           return task
         })
         setTasks(updatedTasks)
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks))
         setEditTaskId(null)
         setEditedTaskTitle('')
         setEditedTaskDescription('')
@@ -69,19 +74,19 @@ const Tabs = () => {
     const deleteAllCompletedTasks = () => {
         const updatedTasks = tasks.filter((task) => !task.completed)
         setTasks(updatedTasks)
+        localStorage.removeItem('tasks')
     }
 
-    useEffect(() => {
-        const storedTasks = localStorage.getItem('tasks')
+    const retrieveTasksFromLocalStorage = () => {
+        const storedTasks = localStorage.getItem('tasks');
         if (storedTasks) {
-          setTasks(JSON.parse(storedTasks))
+          setTasks(JSON.parse(storedTasks));
         }
-      }, [])
-    
-      // Save tasks to localStorage when they change
-      useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks))
-    }, [tasks])
+      }
+      
+    useEffect(() => {
+        retrieveTasksFromLocalStorage();
+    }, [])
 
     return (
         <>

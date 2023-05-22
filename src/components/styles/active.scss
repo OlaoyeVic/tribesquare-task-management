@@ -60,6 +60,7 @@
                 word-wrap: break-word;
             }  
             .btn {
+                background: none;
                 position: relative;
                 float: right;
                 margin-right: 10px;
@@ -71,5 +72,37 @@
                 outline: none;
             }
         }
+    }
+}
+
+@media (max-width: 760px) {
+    .active {
+        display: flex;
+        ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            form {
+                position: relative;
+                // padding: 0 20px;
+                width: 280px;
+                margin: 0 auto;
+                input, textarea {
+                    width: 100%;
+                    border: none;
+                    padding: 4px;
+                    outline: none;
+                    font-size: 1.2em;
+                    font-family: inherit;
+                    resize: none;
+                    background: #FFFFFF;
+                    color: #111111;
+                }
+            }
+        }
+    }
+    .active form {
+        width: 280px;
     }
 }
