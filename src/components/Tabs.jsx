@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import './styles/tabs.scss'
 import All from './All'
 import Active from './Active'
-import Completed from './Completed';
+import Completed from './Completed'
 
 const Tabs = () => {
     const [activeIndex, setActiveIndex] = useState(1)
     const [tasks, setTasks] = useState([])
     const [editTaskId, setEditTaskId] = useState(null)
-    const [editedTaskTitle, setEditedTaskTitle] = useState('');
+    const [editedTaskTitle, setEditedTaskTitle] = useState('')
     const [editedTaskDescription, setEditedTaskDescription] = useState('')
 
 
@@ -85,7 +85,7 @@ const Tabs = () => {
       }
       
     useEffect(() => {
-        retrieveTasksFromLocalStorage();
+        retrieveTasksFromLocalStorage()
     }, [])
 
     return (
