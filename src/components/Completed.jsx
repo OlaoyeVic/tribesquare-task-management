@@ -1,6 +1,7 @@
 import './styles/completed.scss'
 import edit from '../assets/edit.svg'
 import deleteImg from '../assets/delete.png'
+import cancel from '../assets/cancel.png'
 
 const Completed = ({ 
     tasks, 
@@ -46,9 +47,10 @@ const Completed = ({
                             onChange={() => toggleTaskStatus(task.id)}
                             />
                             {editTaskId === task.id ? (
-                            <form>
+                            <form className='edit'>
                                 <input
                                 type="text"
+                                maxLength={24}
                                 value={editedTaskTitle}
                                 onChange={(e) => setEditedTaskTitle(e.target.value)}
                                 />
@@ -61,7 +63,9 @@ const Completed = ({
                                 <button onClick={() => saveEditedTask(task.id, editedTaskTitle, editedTaskDescription)}>
                                 Save
                                 </button>
-                                <button onClick={() => cancelEditTask(task.id)}>Cancel</button>
+                                <button onClick={() => cancelEditTask(task.id)}>
+                                    <img src={cancel} alt='canel' />
+                                </button>
                             </form>
                             ) : (
                             <div className="task-content">

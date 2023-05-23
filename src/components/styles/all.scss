@@ -8,6 +8,7 @@
     align-items: center;
     form {
         position: relative;
+        z-index: 1;
         width: 480px;
         margin: 30px auto 20px auto;
         background: #fff;
@@ -98,11 +99,36 @@
                 margin-right: 10px;
                 color: #f5ba13;
                 border: none;
-                width: 36px;
-                height: 36px;
+                width: 38px;
+                height: 38px;
                 cursor: pointer;
                 outline: none;
             }
+            .edit {
+                z-index: 9999;
+                position: fixed;
+                top: 50%;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                // width: 480px;
+                background: #fff;
+                padding: 15px;
+                border-radius: 7px;
+                box-shadow: 0 1px 5px rgb(138, 137, 137);
+            }
+            .edit ::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(5px);
+                z-index: -2;
+            }
+            
         }
     }
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './styles/active.scss'
 import edit from '../assets/edit.svg'
 import deleteImg from '../assets/delete.png'
+import cancel from '../assets/cancel.png'
 
 const Active = (props) => {
     const {
@@ -36,9 +37,10 @@ const Active = (props) => {
                   onChange={() => toggleTaskStatus(task.id)}
                 />
                 {editTaskId === task.id ? (
-                  <form>
+                  <form className='edit'>
                     <input
                       type="text"
+                      maxLength={24}
                       value={editedTaskTitle}
                       onChange={(event) => setEditedTaskTitle(event.target.value)}
                     />
@@ -51,7 +53,9 @@ const Active = (props) => {
                     <button onClick={() => saveEditedTask(task.id, editedTaskTitle, editedTaskDescription)}>
                       Save
                     </button>
-                    <button onClick={() => cancelEditTask(task.id)}>Cancel</button>
+                    <button onClick={() => cancelEditTask(task.id)}>
+                        <img src={cancel} alt='cancel' />
+                    </button>
                   </form>
                 ) : (
                   <div className="task-content">

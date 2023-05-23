@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './styles/all.scss'
 import edit from '../assets/edit.svg'
 import deleteImg from '../assets/delete.png'
+import cancel from '../assets/cancel.png'
 
 const All = (props) => {
     const {
@@ -18,7 +19,7 @@ const All = (props) => {
         editedTaskDescription,
         setEditTaskId,
         setEditedTaskTitle,
-        setEditedTaskDescription
+        setEditedTaskDescription,
     } = props
     const [newTaskTitle, setNewTaskTitle] = useState('')
     const [newTaskDescription, setNewTaskDescription] = useState('')
@@ -40,7 +41,7 @@ const All = (props) => {
     
 
     return (
-        <div className="all">
+        <div className='all'>
             <div className="input">
                 <form>
                     <input 
@@ -78,9 +79,10 @@ const All = (props) => {
                                 onChange={() => toggleTaskStatus(task.id)}
                             />
                             {editTaskId === task.id ? (
-                                <form>
+                                <form className='edit'>
                                     <input
                                     type="text"
+                                    maxLength={24}
                                     value={editedTaskTitle}
                                     onChange={(event) => setEditedTaskTitle(event.target.value)}
                                     />
@@ -93,7 +95,9 @@ const All = (props) => {
                                     <button onClick={() => saveEditedTask(task.id, editedTaskTitle, editedTaskDescription)}>
                                     Save
                                     </button>
-                                    <button onClick={() => cancelEditTask(task.id)}>Cancel</button>
+                                    <button onClick={() => cancelEditTask(task.id)}>
+                                        <img src={cancel} alt='cancel' />
+                                    </button>
                                 </form>
                                 ) : (
                                 <div className="task-content">
@@ -112,7 +116,7 @@ const All = (props) => {
                                         <img src={deleteImg} alt='delete' style={{ width: '20px', height: '20px'}} />
                                     </button>
                                 </div>
-                                )}
+                            )}
                         </li>
                     ))}
                 </ul>

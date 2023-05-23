@@ -5,6 +5,30 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    .edit {
+        z-index: 9999;
+        position: fixed;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        // width: 480px;
+        background: #fff;
+        padding: 15px;
+        border-radius: 7px;
+        box-shadow: 0 1px 5px rgb(138, 137, 137);
+    }
+    .edit ::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: -2;
+    }
     form {
         position: relative;
         width: 480px;

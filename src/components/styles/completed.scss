@@ -8,6 +8,30 @@
     ul {
         margin-top: 70px;
     }
+    .edit {
+        z-index: 9999;
+        position: fixed;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        // width: 480px;
+        background: #fff;
+        padding: 15px;
+        border-radius: 7px;
+        box-shadow: 0 1px 5px rgb(138, 137, 137);
+    }
+    .edit ::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: -2;
+    }
     form {
         position: relative;
         width: 480px;
@@ -52,15 +76,23 @@
         // align-items: center;
         margin-bottom: 25px;
         button {
-            color: #FFFFFF;
-            background-color: red;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 17px;
+            color: #F85149;
+            background-color: #21262D;
             width: 150px;
             height: 50px;
             border: none;
             outline: none;
             border-radius: 5px;
             cursor: pointer;
+            &:hover {
+                color: #FFFFFF;
+                background-color: #F85149;
+            }
         }
+        
     }
     ul {
         list-style-type: none;
