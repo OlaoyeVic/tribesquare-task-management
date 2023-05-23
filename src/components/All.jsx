@@ -107,7 +107,7 @@ const All = (props) => {
                                         className='btn'
                                         onClick={() => startEditTask(task.id, task.title, task.description)}
                                     >
-                                        <img src={edit} alt='edit' />
+                                        <img src={edit} alt='edit' style={{ width: '20px', height: '20px'}}/>
                                     </button>
                                     <button
                                         className='btn'

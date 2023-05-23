@@ -44,8 +44,6 @@ const Tabs = () => {
     }
     
     const startEditTask = (taskId, taskTitle, taskDescription) => {
-        setEditingVisible(true)
-        setIsOverlayVisible(true)
         setEditTaskId(taskId)
         setEditedTaskTitle(taskTitle)
         setEditedTaskDescription(taskDescription)
@@ -71,7 +69,6 @@ const Tabs = () => {
     
     const cancelEditTask = (taskId) => {
         setEditTaskId(null)
-        setIsEditingVisible(false)
     }
     
     const deleteAllCompletedTasks = () => {
